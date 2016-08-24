@@ -2,6 +2,7 @@
 var request = require('superagent');
 var program = require('commander');
 var _ = require('lodash');
+var chalk = require('chalk');
 
 function getAllApis(baseUrl, access_token) {
     return request.get(baseUrl)
@@ -41,19 +42,19 @@ program
         .then(function(body) {
             return _.flattenDeep(body);
         }, function(err){
-            console.log(err);
+            console.log(chalk.red(err));
         })
         .then(function(apis) {
             return Promise.all(apis.map(function(api) {
                 //console.log(api.name);
                 return updateApi(baseUrl, api.id, options.access_token, options.service_url).then(function(res) {
-                    console.log("updated api "+ api.name);
+                    console.log(chalk.green("successfully updated api: ")+ api.id);
                 }, function(err) {
-                    console.log(err);
+                    console.log(chalk.red(err));
                 });
             }));
         }).catch(function(err) {
-            console.log(err);
+            console.log(chalk.red(err));
         });
     });
 
