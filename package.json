@@ -1,0 +1,19 @@
+{
+  "name": "azure-apim-cli",
+  "version": "0.1.0",
+  "description": "Command Line Interface to perform common azure api managemenet tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "azure-apim-cli": "./index.js"
+  },
+  "author": "Harish Babu",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "lodash": "^4.15.0",
+    "superagent": "^2.2.0"
+  }
+}
