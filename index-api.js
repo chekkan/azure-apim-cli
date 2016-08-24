@@ -42,19 +42,19 @@ program
         .then(function(body) {
             return _.flattenDeep(body);
         }, function(err){
-            console.log(chalk.red(err));
+            console.log(chalk.bold.red(err));
         })
         .then(function(apis) {
             return Promise.all(apis.map(function(api) {
                 //console.log(api.name);
                 return updateApi(baseUrl, api.id, options.access_token, options.service_url).then(function(res) {
-                    console.log(chalk.green("successfully updated api: ")+ api.id);
+                    console.log(chalk.bold.green("successfully updated api: ")+ api.id);
                 }, function(err) {
-                    console.log(chalk.red(err));
+                    console.log(chalk.bold.red(err));
                 });
             }));
         }).catch(function(err) {
-            console.log(chalk.red(err));
+            console.log(chalk.bold.red(err));
         });
     });
 
